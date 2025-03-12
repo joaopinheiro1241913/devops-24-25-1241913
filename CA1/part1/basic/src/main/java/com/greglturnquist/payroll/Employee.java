@@ -32,13 +32,24 @@ public class Employee {
 	private String firstName;
 	private String lastName;
 	private String description;
+	private int jobYears;
 
-	private Employee() {}
+	// Empty constructor
+	public Employee() {}
 
-	public Employee(String firstName, String lastName, String description) {
+	// Constructor to initialize the Employee with the provided attributes
+	public Employee(String firstName, String lastName, String description, int jobYears) {
+		validateParameter(firstName, "First Name");
 		this.firstName = firstName;
+
+		validateParameter(lastName, "Last Name");
 		this.lastName = lastName;
+
+		validateParameter(description, "Description");
 		this.description = description;
+
+		validateJobYears(jobYears);
+		this.jobYears = jobYears;
 	}
 
 	@Override
@@ -49,13 +60,13 @@ public class Employee {
 		return Objects.equals(id, employee.id) &&
 			Objects.equals(firstName, employee.firstName) &&
 			Objects.equals(lastName, employee.lastName) &&
-			Objects.equals(description, employee.description);
+			Objects.equals(description, employee.description) &&
+			Objects.equals(jobYears, employee.jobYears);
 	}
 
 	@Override
 	public int hashCode() {
-
-		return Objects.hash(id, firstName, lastName, description);
+		return Objects.hash(id, firstName, lastName, description, jobYears);
 	}
 
 	public Long getId() {
@@ -71,6 +82,7 @@ public class Employee {
 	}
 
 	public void setFirstName(String firstName) {
+		validateParameter(firstName, "First Name");
 		this.firstName = firstName;
 	}
 
@@ -79,6 +91,7 @@ public class Employee {
 	}
 
 	public void setLastName(String lastName) {
+		validateParameter(lastName, "Last Name");
 		this.lastName = lastName;
 	}
 
@@ -87,7 +100,17 @@ public class Employee {
 	}
 
 	public void setDescription(String description) {
+		validateParameter(description, "Description");
 		this.description = description;
+	}
+
+	public int getJobYears() {
+		return jobYears;
+	}
+
+	public void setJobYears(int jobYears) {
+		validateJobYears(jobYears);
+		this.jobYears = jobYears;
 	}
 
 	@Override
@@ -97,7 +120,22 @@ public class Employee {
 			", firstName='" + firstName + '\'' +
 			", lastName='" + lastName + '\'' +
 			", description='" + description + '\'' +
+			", jobYears=" + jobYears +
 			'}';
+	}
+
+	// Helper method to validate parameters that should not be null or empty
+	private void validateParameter(String parameter, String fieldName) {
+		if (parameter == null || parameter.isEmpty()) {
+			throw new IllegalArgumentException(fieldName + " cannot be empty or null");
+		}
+	}
+
+	// Helper method to validate jobYears to ensure it is non-negative
+	private void validateJobYears(int jobYears) {
+		if (jobYears < 0) {
+			throw new IllegalArgumentException("Job years cannot be negative");
+		}
 	}
 }
 // end::code[]
