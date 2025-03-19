@@ -28,7 +28,8 @@ import javax.persistence.Id;
 @Entity // <1>
 public class Employee {
 
-	private @Id @GeneratedValue Long id; // <2>
+	private @Id
+	@GeneratedValue Long id; // <2>
 	private String firstName;
 	private String lastName;
 	private String description;
@@ -36,7 +37,8 @@ public class Employee {
 	private String email;
 
 	// Empty constructor
-	public Employee() {}
+	public Employee() {
+	}
 
 	// Constructor to initialize the Employee with the provided attributes
 	public Employee(String firstName, String lastName, String description, int jobYears, String email) {
@@ -52,7 +54,7 @@ public class Employee {
 		validateJobYears(jobYears);
 		this.jobYears = jobYears;
 
-		validateParameter(email, "Email");
+		validateEmail(email);
 		this.email = email;
 	}
 
@@ -62,11 +64,11 @@ public class Employee {
 		if (o == null || getClass() != o.getClass()) return false;
 		Employee employee = (Employee) o;
 		return Objects.equals(id, employee.id) &&
-			Objects.equals(firstName, employee.firstName) &&
-			Objects.equals(lastName, employee.lastName) &&
-			Objects.equals(description, employee.description) &&
-			Objects.equals(jobYears, employee.jobYears) &&
-			Objects.equals(email, employee.email);
+				Objects.equals(firstName, employee.firstName) &&
+				Objects.equals(lastName, employee.lastName) &&
+				Objects.equals(description, employee.description) &&
+				Objects.equals(jobYears, employee.jobYears) &&
+				Objects.equals(email, employee.email);
 	}
 
 	@Override
@@ -118,23 +120,25 @@ public class Employee {
 		this.jobYears = jobYears;
 	}
 
-	public String getEmail() { return email; }
+	public String getEmail() {
+		return email;
+	}
 
 	public void setEmail(String email) {
-		validateParameter(email, "Email");
+		validateEmail(email);
 		this.email = email;
 	}
 
 	@Override
 	public String toString() {
 		return "Employee{" +
-			"id=" + id +
-			", firstName='" + firstName + '\'' +
-			", lastName='" + lastName + '\'' +
-			", description='" + description + '\'' +
-			", jobYears=" + jobYears + '\'' +
-			", email='" + email + '\'' +
-			'}';
+				"id=" + id +
+				", firstName='" + firstName + '\'' +
+				", lastName='" + lastName + '\'' +
+				", description='" + description + '\'' +
+				", jobYears=" + jobYears + '\'' +
+				", email='" + email + '\'' +
+				'}';
 	}
 
 	// Helper method to validate parameters that should not be null or empty
@@ -150,5 +154,15 @@ public class Employee {
 			throw new IllegalArgumentException("Job years cannot be negative");
 		}
 	}
+
+	// Helper method to validate email format
+	private void validateEmail(String email) {
+		if (email == null || email.isEmpty()) {
+			throw new IllegalArgumentException("Email cannot be empty or null");
+		}
+		if (!email.contains("@")) {
+			throw new IllegalArgumentException("Email must contain an '@' sign");
+		}
+	}
 }
-// end::code[]
+// e}nd::code[]
