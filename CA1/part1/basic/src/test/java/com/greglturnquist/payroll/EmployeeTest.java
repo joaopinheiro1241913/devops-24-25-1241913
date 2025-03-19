@@ -108,6 +108,14 @@ class EmployeeTest {
         assertThrows(Exception.class, () -> new Employee("Joao","Pinheiro", "", 5, ""));
     }
 
+    @Test
+    void shouldThrowExceptionWhenEmailDoesNotContainAtSymbol() {
+        //arrange
+        //act
+        //assert
+        assertThrows(Exception.class, () -> new Employee("Joao","Pinheiro", "", 5, "joao7pinheirohotmail.com"));
+    }
+
 
     // equals() Tests
     @Test
@@ -456,6 +464,15 @@ class EmployeeTest {
         Employee employee1 = new Employee("Joao", "Pinheiro", "Developer", 5, "joao7pinheiro@hotmail.com");
         //act + assert
         assertThrows(Exception.class, () -> employee1.setEmail(email));
+    }
+
+    @Test
+    void shouldThrowExceptionWhenSetWithEmailMissingAtSymbol(){
+        // arrange
+        String email = "joaopinheiro123hotmail.com";
+        Employee employee1 = new Employee("Joao", "Pinheiro", "Developer", 5, "joao7pinheiro@hotmail.com");
+        // act + assert
+        assertThrows(IllegalArgumentException.class, () -> employee1.setEmail(email));
     }
 
 
