@@ -33,12 +33,13 @@ public class Employee {
 	private String lastName;
 	private String description;
 	private int jobYears;
+	private String email;
 
 	// Empty constructor
 	public Employee() {}
 
 	// Constructor to initialize the Employee with the provided attributes
-	public Employee(String firstName, String lastName, String description, int jobYears) {
+	public Employee(String firstName, String lastName, String description, int jobYears, String email) {
 		validateParameter(firstName, "First Name");
 		this.firstName = firstName;
 
@@ -50,6 +51,9 @@ public class Employee {
 
 		validateJobYears(jobYears);
 		this.jobYears = jobYears;
+
+		validateParameter(email, "Email");
+		this.email = email;
 	}
 
 	@Override
@@ -61,12 +65,13 @@ public class Employee {
 			Objects.equals(firstName, employee.firstName) &&
 			Objects.equals(lastName, employee.lastName) &&
 			Objects.equals(description, employee.description) &&
-			Objects.equals(jobYears, employee.jobYears);
+			Objects.equals(jobYears, employee.jobYears) &&
+			Objects.equals(email, employee.email);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, firstName, lastName, description, jobYears);
+		return Objects.hash(id, firstName, lastName, description, jobYears, email);
 	}
 
 	public Long getId() {
@@ -113,6 +118,13 @@ public class Employee {
 		this.jobYears = jobYears;
 	}
 
+	public String getEmail() { return email; }
+
+	public void setEmail(String email) {
+		validateParameter(email, "Email");
+		this.email = email;
+	}
+
 	@Override
 	public String toString() {
 		return "Employee{" +
@@ -120,7 +132,8 @@ public class Employee {
 			", firstName='" + firstName + '\'' +
 			", lastName='" + lastName + '\'' +
 			", description='" + description + '\'' +
-			", jobYears=" + jobYears +
+			", jobYears=" + jobYears + '\'' +
+			", email='" + email + '\'' +
 			'}';
 	}
 
