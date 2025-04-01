@@ -1,7 +1,7 @@
 var path = require('path');
 
 module.exports = {
-    entry: './frontend/src/main/js/app.js',  // Ajuste o caminho se necessário
+    entry: './src/js/app.js',
     devtool: 'source-map',
     cache: true,
     mode: 'development',
