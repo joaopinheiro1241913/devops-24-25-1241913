@@ -1700,55 +1700,158 @@ Below is a comparison of Ant and Gradle based on key factors relevant for build 
 
 ### Implementation of the alternative
 
+To replicate the setup and functionality achieved with Gradle, this guide outlines the steps required to configure **Apache Ant** as the build tool for a **Spring Boot application**. This alternative mirrors the Gradle setup, including **frontend asset integration, custom build targets, and file handling**. The following steps will guide you through the process of setting up **Apache Ant** with **Ivy** to manage the build lifecycle and dependency resolution.
+
+---
+
+- **Project Setup:**
+
+The build process is orchestrated through a **build.xml** file. The **Spring Boot backend** requires dependencies such as **JPA, Thymeleaf, and H2**, which are declared in an **ivy.xml** file. **Ivy** is responsible for resolving and retrieving these libraries into a local **lib directory**.
+
+Additionally, an **ivysettings.xml** file is configured to fetch dependencies directly from **Maven Central**, ensuring that all essential libraries for the project are automatically downloaded and managed.
+
+To set up the necessary tools, the process starts by creating essential files and then installing **Apache Ant**, which will be used to manage the build process.
+
+1. **Create essential configuration files**
+2. **Install Apache Ant**
+3. **Verify the installation**
+4. **Set up the dependency directory**
+5. **Install Ivy**
+
 ```bash
+# Creates the build script file
 touch build.xml
+
+# Defines dependencies for the project
 touch ivy.xml
+
+# Specifies how Ivy should resolve dependencies
 touch ivysettings.xml
 
+# Creates a directory for storing resolved dependencies
+mkdir lib
+
+# Installs Apache Ant
 brew install ant
 
+# Verifies the installation by displaying the installed version
 ant -version
+
+# Install Ivy 2.5.3
 ```
 
 ![antversion](https://i.postimg.cc/44QDvqXw/joaopinheiro-Joaos-Mac-Book-Pro-4-ant-alternative-ant-version.png)
 
+---
+- **Dependency Management:**
+
+The dependencies are defined in an **ivy.xml** file, ensuring all necessary libraries are available for the build.
+
+```xml
+<ivy-module version="2.0">
+    <info organisation="com.example" module="my-project"/>
+
+    <configurations>
+        <conf name="compile" description="compile-time dependencies"/>
+        <conf name="runtime" description="runtime dependencies"/>
+    </configurations>
+
+    <dependencies>
+        <!-- Core Spring Boot -->
+        <dependency org="org.springframework.boot" name="spring-boot-starter" rev="2.4.4"/>
+
+        <!-- JPA support -->
+        <dependency org="org.springframework.boot" name="spring-boot-starter-data-jpa" rev="2.4.4"/>
+
+        <!-- Web support -->
+        <dependency org="org.springframework.boot" name="spring-boot-starter-web" rev="2.4.4"/>
+
+        <!-- DevTools (opcional, só para desenvolvimento) -->
+        <dependency org="org.springframework.boot" name="spring-boot-devtools" rev="2.4.4" conf="compile->runtime"/>
+
+        <!-- H2 (base de dados em memória, útil para testes) -->
+        <dependency org="com.h2database" name="h2" rev="1.4.200"/>
+
+        <dependency org="org.springframework.boot" name="spring-boot-starter-data-rest" rev="2.4.4"/>
+
+        <dependency org="javax.xml.bind" name="jaxb-api" rev="2.3.1"/>
+        <dependency org="org.glassfish.jaxb" name="jaxb-runtime" rev="2.3.1"/>
+        <dependency org="javax.activation" name="activation" rev="1.1.1"/>
+        <dependency org="org.springframework.boot" name="spring-boot-starter-thymeleaf" rev="2.4.4"/>
+    </dependencies>
+</ivy-module>
+```
+
+Additionally, the **ivysettings.xml** file is set up to retrieve dependencies from **Maven Central**.
+
+```xml
+<ivysettings>
+    <settings defaultResolver="central"/>
+    <resolvers>
+        <ibiblio name="central" m2compatible="true"/>
+    </resolvers>
+</ivysettings>
+```
+
+---
+
+- **Building the Project:**
+
+Once the initial setup is complete, the project can be built using a specific Ant command. This command compiles the source code and generates the necessary files for running the application.
 
 ```bash
-mkdir lib
-
-# Install ivy 2.5.3 
-```
-
-``` 
-"scripts": {
-```
-
-
-``` bash
 ant build
 ```
 
 ![antbuild](https://i.postimg.cc/hj9H53TD/Screenshot-2025-04-01-at-23-39-50.png)
 
-``` bash
+After the build process is completed, the next step is to run the project, ensuring that everything functions correctly.
+
+```bash
 ant run
 ```
 
 ![antrun](https://i.postimg.cc/HL7GQLL7/Screenshot-2025-04-01-at-23-42-06.png)
 
+---
 
-#### Copy JAR Task:
+- **Frontend Integration:**
+
+The project also includes a frontend integration. To handle this, Ant is configured to execute **Node.js and npm** commands, ensuring that frontend dependencies are properly installed and the build is generated automatically.
+
+The structure assumes that a **React application** is located inside **src/main/resources/static**. Ant uses specific tasks to install frontend dependencies and initiate the build process using Webpack.
 
 ```xml
-<!-- === Optional: Copy Jar to dist folder === -->
+<target name="frontend-assemble">
+    <echo message="🔧 Installing dependencies..."/>
+    <exec executable="npm" dir="src/main/resources/static">
+        <arg value="install"/>
+    </exec>
+
+    <echo message="📦 Building frontend with webpack..."/>
+    <exec executable="npm" dir="src/main/resources/static">
+        <arg value="run"/>
+        <arg value="build"/>
+    </exec>
+</target>
+```
+
+- **Copy JAR Task:**
+
+After building the backend and integrating the frontend, the next step is to package the application. This process generates a **JAR file**, containing all the necessary components for deployment. The following Ant task moves the final JAR file to the **dist/** folder:
+
+```xml
 <target name="copyJar" depends="jar">
     <copy file="${dist.dir}/my-spring-boot-app.jar" todir="${dist.dir}"/>
 </target>
 ```
 
+To execute this process, run:
 ```bash
 ant copyJar
 ```
+
+This command copies the compiled JAR into the **dist/** directory, making it ready for deployment.
 
 ![cpj](https://i.postimg.cc/02pbC8bF/Screenshot-2025-04-01-at-23-54-38.png)
 
@@ -1756,16 +1859,17 @@ ant copyJar
 
 ---
 
-#### Delete Webpack Files Task:
+- **Delete Webpack Files Task:**
 
+To remove frontend-generated assets (e.g., from a previous Webpack build), the delete task is configured as part of the clean phase. This ensures that old or unnecessary files are cleared before a new build.
 ```xml
-<!-- === Delete Webpack build directory === -->
+<!-- Delete Webpack Files Task -->
 <target name="deleteWebpackFiles">
     <echo message="Deleting the entire built directory"/>
     <delete dir="${src.dir}/main/resources/static/built"/>
 </target>
 
-<!-- === Delete Webpack build directory === -->
+ <!-- Clean Task -->
 <target name="clean" depends="deleteWebpackFiles">
     <delete dir="${build.dir}"/>
     <delete dir="${dist.dir}"/>
@@ -1775,11 +1879,27 @@ ant copyJar
 </target>
 ```
 
+The `deleteWebpackFiles` task removes the **built** directory, which contains the previous Webpack build files. The `clean` task also removes other build-related directories like **build**, **dist**, and any JAR files from the **lib** `folder, except for the Ivy dependencies.
+
+To execute the clean-up process, you can run the following command:
+
 ```bash
 ant clean
 ```
 
+This command will remove any stale files, ensuring a fresh build environment for the next build cycle.
+
+
+
 ![antcl](https://i.postimg.cc/Gp9L6rmc/Screenshot-2025-04-01-at-23-52-43.png)
+
+The image shows the output of the ant clean command, confirming that the cleaning process was successful.
+
+---
+
+**Directory Structure:**
+
+The last image illustrates the directory structure of the project after the build and clean tasks have been executed. This helps visualize how the files are organized and what directories are cleaned or maintained.
 
 ![strctr](https://i.postimg.cc/rs2qdrCm/Js-webpack-config-js.png)
 
