@@ -1,3 +1,16 @@
+# Gradle Backup Directory
+CA1/part2/gradle-basic/backup
+
+# Frontend Gradle Plugin Directory
+CA1/part3/react-and-spring-data-rest-basic/.frontend-gradle-plugin/
+
+# Prevents node directory from being pushed to remote repo
+CA1/part3/react-and-spring-data-rest-basic/node/
+
+# Vagrant Directory
 .vagrant/
+
+# WAR Files
 *.war
+
 
