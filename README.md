@@ -27,7 +27,12 @@ Each directory in this repository corresponds to a specific **class assignment**
 - **[Part 2: Build Tools with Gradle - Gradle Basics](#part-2-build-tools-with-gradle---gradle-basics)**
 - **[Part 3: Build Tools with Gradle - Maven to Gradle Migration](#part-3-build-tools-with-gradle---maven-to-gradle-migration)**
 
-#### **CA2** (Upcoming)
+#### **CA2 - XXXX**
+- **[Part 1: Virtualization with Vagrant : Practice with Virtual Machine]()**
+- **[Part 2: Virtualization with Vagrant : Using Vagrant for Managing VMs]()**
+- **[Part 3: Dockers?]()**
+- **[Part 4: ]()**
+
 #### **CA3** (Upcoming)
 
 ---
