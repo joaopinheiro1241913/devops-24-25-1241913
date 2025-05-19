@@ -1,19 +1,18 @@
 var path = require('path');
 
 module.exports = {
-    entry: './frontend/src/main/js/app.js',  // Ajuste o caminho se necessário
-    devtool: 'source-map',
+    entry: './src/main/js/app.js',
+    devtool: 'sourcemaps',
     cache: true,
     mode: 'development',
     output: {
-        // Caminho onde o arquivo bundle.js será gerado para o Spring Boot servir
-        path: path.resolve(__dirname, 'src/main/resources/static/built'),
-        filename: 'bundle.js'  // O arquivo será gerado como 'bundle.js'
+        path: __dirname,
+        filename: './src/main/resources/static/built/bundle.js'
     },
     module: {
         rules: [
             {
-                test: /\.js$/,
+                test: path.join(__dirname, '.'),
                 exclude: /(node_modules)/,
                 use: [{
                     loader: 'babel-loader',
