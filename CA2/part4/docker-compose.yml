@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+
+  db:
+    build: ./db
+    ports:
+      - "8082:8082"
+      - "9092:9092"
+    volumes:
+      - ./data:/usr/src/data-backup
+    networks:
+      my_own_network:
+        ipv4_address: 192.168.56.11
+
+  web:
+    build:
+      context: ../../
+      dockerfile: CA2/part4/web/Dockerfile
+    ports:
+      - "8080:8080"
+    networks:
+      - my_own_network
+    depends_on:
+      - db
+
+networks:
+  my_own_network:
+    driver: bridge
+    ipam:
+      config:
+          - subnet: "192.168.56.0/24"
