@@ -28,7 +28,7 @@ Each directory in this repository corresponds to a specific **class assignment**
 - **[Part 3: Build Tools with Gradle - Maven to Gradle Migration](#part-3-build-tools-with-gradle---maven-to-gradle-migration)**
 
 #### **CA2 - Virtualization & Containerization**
-- **[Part 1: Virtualization with Vagrant : Practice with Virtual Machine]()**
+- **[Part 1: Virtualization with UTM : Practice with VM]()**
 - **[Part 2: Virtualization with Vagrant : Using Vagrant for Managing VMs]()**
 - **[Part 3: Docker - Containerization with Docker]()**
 - **[Part 4: Docker Compose - Multi-Container Deployment with Docker Compose]()**

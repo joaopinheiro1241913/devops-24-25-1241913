@@ -74,7 +74,7 @@ Below is the complete breakdown, covering all tasks and requirements in detail.
 - [Project Structure and Documentation](#project-structure-and-documentation)
 
 
-- **[Part 1: Virtualization with Vagrant - Practice with Virtual Machine]()**
+- **[Part 1: Virtualization with UTM - Practice with VM]()**
   - [Introduction to Part 1](#introduction-to-part-1)
     - [Main Objectives](#-main-objectives)
   - [Virtual Machine Setup with UTM](#-virtual-machine-setup-with-utm)
