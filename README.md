@@ -27,13 +27,13 @@ Each directory in this repository corresponds to a specific **class assignment**
 - **[Part 2: Build Tools with Gradle - Gradle Basics](#part-2-build-tools-with-gradle---gradle-basics)**
 - **[Part 3: Build Tools with Gradle - Maven to Gradle Migration](#part-3-build-tools-with-gradle---maven-to-gradle-migration)**
 
-#### **CA2 - XXXX**
+#### **CA2 - Virtualization & Containerization**
 - **[Part 1: Virtualization with Vagrant : Practice with Virtual Machine]()**
 - **[Part 2: Virtualization with Vagrant : Using Vagrant for Managing VMs]()**
-- **[Part 3: Dockers?]()**
-- **[Part 4: ]()**
+- **[Part 3: Docker - Containerization with Docker]()**
+- **[Part 4: Docker Compose - Multi-Container Deployment with Docker Compose]()**
 
-#### **CA3** (Upcoming)
+#### **CA3 - Upcoming**
 
 ---
 
@@ -41,12 +41,14 @@ Each directory in this repository corresponds to a specific **class assignment**
 
 Ensure the following dependencies are installed before running the project:
 
-| **Tool**      | **Version Required** | **Purpose** |
-|--------------|----------------------|------------|
-| **Java**     | 17 or higher         | Backend development |
-| **Maven**    | 3.6.0 or higher      | Dependency & build management |
-| **Node.js**  | 14 or higher         | Frontend runtime |
-| **npm**      | 6 or higher          | Frontend package manager |
+| **Tool**    | **Version Required** | **Purpose**                    |
+|-------------|----------------------|--------------------------------|
+| **Java**    | 17 or higher         | Backend development            |
+| **Maven**   | 3.6.0 or higher      | Dependency & build management  |
+| **Node.js** | 14 or higher         | Frontend runtime               |
+| **npm**     | 6 or higher          | Frontend package manager       |
+| **Vagrant** | Latest stable        | Virtual environment management |
+| **QEMU**    | Latest stable        | Virtualization platform        |
 
 🔹 **Check installed versions:**
 
@@ -55,12 +57,14 @@ java -version
 mvn -version
 node -v
 npm -v
+vagrant --version
+qemu-system-x86_64 --version 
 ```
 
 ---
 
 ## 🚀 Getting Started
-### **Clone the repository:
+### Clone the repository:
 
 ```bash
 git clone https://github.com/joaopinheiro1241913/devops-24-25-1241913
