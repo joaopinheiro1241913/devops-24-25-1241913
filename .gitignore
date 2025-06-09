@@ -187,6 +187,10 @@ fabric.properties
 
 # Package Files #
 *.jar
+
+# But allow the Gradle wrapper JAR
+!gradle/wrapper/gradle-wrapper.jar
+
 *.war
 *.nar
 *.ear
