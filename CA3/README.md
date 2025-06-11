@@ -431,7 +431,7 @@ This graph gives you a quick and intuitive overview of your pipeline's execution
 
 ## Part 2: Jenkins Pipeline for React and Spring Data REST Basic Application
 
-In the second phase of the CA3 assignment, the CI/CD configuration was expanded to support a full-stack application that combines a **React frontend** with a **Spring Data REST backend**. This project, originally built in ```CA1/part3/react-and-spring-data-rest-basic``, required a more advanced and integrated pipeline setup.
+In the second phase of the CA3 assignment, the CI/CD configuration was expanded to support a full-stack application that combines a **React frontend** with a **Spring Data REST backend**. This project, originally built in ```CA1/part3/react-and-spring-data-rest-basic```, required a more advanced and integrated pipeline setup.
 
 ### Jenkinsfile
 
