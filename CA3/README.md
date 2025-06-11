@@ -628,6 +628,8 @@ After configuring the pipeline job:
 - Monitor the execution progress through the **Console Output**, which shows detailed feedback for each pipeline stage.
 
 
+![springbootdemo](https://i.postimg.cc/6qP8rwyv/image.png)
+
 ---
 
 ## 🔚 Overall Conclusion of CA3
