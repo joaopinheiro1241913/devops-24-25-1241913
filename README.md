@@ -33,7 +33,7 @@ Each directory in this repository corresponds to a specific **class assignment**
 - **[Part 3: Docker - Containerization with Docker]()**
 - **[Part 4: Docker Compose - Multi-Container Deployment with Docker Compose]()**
 
-#### **CA3 - Jenkins**
+#### **CA3 - CI/CD Pipelines with Jenkins**
 - **[Part 1: Jenkins Pipeline for Gradle Basic Demo Application]()**
 - **[Part 2: Jenkins Pipeline for Rest and Spring Data REST Basic Application]()**
 
