@@ -45,3 +45,15 @@ task cleanWebpack(type: Delete) {
 
 clean.dependsOn cleanWebpack
 
+// Configuração para gerar relatórios de teste em XML (necessário para Jenkins)
+tasks.test {
+	useJUnitPlatform()
+	testLogging {
+		events "passed", "skipped", "failed"
+	}
+	reports {
+		junitXml.required = true
+		html.required = true
+	}
+}
+
