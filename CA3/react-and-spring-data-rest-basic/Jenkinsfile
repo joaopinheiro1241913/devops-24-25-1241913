@@ -13,6 +13,7 @@ pipeline {
 
         stage('Checkout') {
             steps {
+                cleanWs()
                 echo 'Checking out...'
                 git branch: 'main', url: env.REPO_URL
             }
