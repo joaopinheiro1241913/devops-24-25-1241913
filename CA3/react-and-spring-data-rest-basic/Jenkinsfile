@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         PATH = "/usr/local/bin:$PATH"
-        DOCKER_CREDENTIALS_ID = 'dockerhub-creds-id'
+        DOCKER_CREDENTIALS_ID = 'credentials-dockerhub'
         DOCKER_IMAGE          = 'joaopinheiro1241913/jenkins-custom'
         DOCKER_REGISTRY       = 'https://index.docker.io/v1/'
         REPO_URL              = 'https://github.com/joaopinheiro1241913/devops-24-25-1241913.git'
