@@ -97,6 +97,20 @@ cd devops-24-25-1241913
 
 ---
 
+---
+
+## 📊 Repository Activity Highlights
+
+Throughout the development of the assignments, the following GitHub features were actively used to maintain a clean and traceable workflow:
+
+- 🔀 **4 branches** – for organizing parallel developments and experiments
+- 🏷️ **16 tags** – marking key milestones and assignment completions
+- 📝 **70+ commits** – incremental progress with clear commit messages
+- 🐞 **65 issues** – for tracking tasks, bugs, and improvements
+
+
+---
+
 ## 📌 Contact
 
 
