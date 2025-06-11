@@ -11,7 +11,7 @@
 This repository contains all **class assignments** for the **DevOps course** in the **SWitCH DEV 2024/2025 program**.  
 It serves as a structured collection of **practical projects and exercises** covering **key DevOps methodologies, tools, and best practices**.
 
-Throughout the semester, various topics such as **version control, build automation, CI/CD, and infrastructure management** will be explored.  
+Throughout the semester, various topics such as **version control, build automation, CI/CD pipelines, containerization, and virtualization** will be explored using tools like **Git, Jenkins, Docker, and Vagrant**.
 Each assignment is **documented with explanations, code snippets, and results** to ensure a comprehensive learning experience.
 
 ---
@@ -41,27 +41,48 @@ Each directory in this repository corresponds to a specific **class assignment**
 
 ## ✅ Prerequisites
 
-Ensure the following dependencies are installed before running the project:
+Ensure the following dependencies are installed before running the projects or completing the assignments:
 
-| **Tool**    | **Version Required** | **Purpose**                    |
-|-------------|----------------------|--------------------------------|
-| **Java**    | 17 or higher         | Backend development            |
-| **Maven**   | 3.6.0 or higher      | Dependency & build management  |
-| **Node.js** | 14 or higher         | Frontend runtime               |
-| **npm**     | 6 or higher          | Frontend package manager       |
-| **Vagrant** | Latest stable        | Virtual environment management |
-| **QEMU**    | Latest stable        | Virtualization platform        |
+| **Tool**       | **Version Required** | **Purpose**                             |
+|----------------|----------------------|-----------------------------------------|
+| **Java**       | 17 or higher         | Backend development (Spring Boot)       |
+| **Maven**      | 3.6.0 or higher      | Dependency & build management           |
+| **Node.js**    | 14 or higher         | Frontend runtime (React)                |
+| **npm**        | 6 or higher          | Frontend package manager                |
+| **Docker**     | 20.10+               | Containerization                        |
+| **Docker Compose** | 1.29+           | Multi-container orchestration           |
+| **Jenkins**    | Latest stable (LTS)  | Continuous Integration / Deployment     |
+| **Vagrant**    | Latest stable        | Virtual environment provisioning        |
+| **QEMU**       | Latest stable        | Virtualization platform (UTM backend)   |
+| **Git**        | Any recent version   | Version control                         |
 
 🔹 **Check installed versions:**
 
-```sh
+```bash
 java -version
 mvn -version
 node -v
 npm -v
+docker --version
+docker-compose --version
+jenkins --version
 vagrant --version
-qemu-system-x86_64 --version 
+qemu-system-x86_64 --version
+git --version
 ```
+
+---
+
+## 🧰 Technologies Used
+
+This repository demonstrates hands-on experience with several key DevOps tools and technologies:
+
+- 🧾 **Git & GitHub** – Version control and repository management
+- 🧱 **Gradle & Maven** – Build automation tools
+- 🐳 **Docker & Docker Compose** – Containerization and service orchestration
+- 🔧 **Jenkins** – Continuous Integration / Continuous Deployment (CI/CD)
+- 💻 **Vagrant & QEMU (via UTM)** – Virtualization and VM provisioning
+- 🌐 **Spring Boot & React** – Backend and frontend application frameworks
 
 ---
 
