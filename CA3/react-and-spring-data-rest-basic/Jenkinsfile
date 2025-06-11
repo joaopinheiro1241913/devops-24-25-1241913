@@ -90,7 +90,7 @@ ENTRYPOINT ["java", "-jar", "app.jar"]
                     echo 'Building Docker image...'
                     withCredentials([usernamePassword(credentialsId: env.DOCKER_CREDENTIALS_ID, usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
                         script {
-                            def dockerBin = '/usr/local/bin/docker'
+                            def dockerBin = 'docker'
                             def imageTag = "${env.DOCKER_IMAGE}:${env.BUILD_NUMBER}"
 
                             sh "${dockerBin} build -t ${imageTag} ."
