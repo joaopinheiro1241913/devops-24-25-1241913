@@ -13,6 +13,7 @@ pipeline {
         REPO_URL              = 'https://github.com/joaopinheiro1241913/devops-24-25-1241913.git'
     }
 
+stages {
     stage('Checkout') {
         steps {
             echo 'Cleaning workspace before checkout...'
