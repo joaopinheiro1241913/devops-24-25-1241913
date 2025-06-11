@@ -19,7 +19,7 @@ pipeline {
 
         stage('Create Dockerfile') {
             steps {
-                dir('CA3/react-and-spring-data-rest-basic') {
+                dir('CA1/part3/react-and-spring-data-rest-basic') {
                     echo 'Creating Dockerfile...'
                     script {
                         writeFile file: 'Dockerfile', text: '''
@@ -36,7 +36,7 @@ ENTRYPOINT ["java", "-jar", "app.jar"]
 
         stage('Assemble') {
             steps {
-                dir('CA3/react-and-spring-data-rest-basic') {
+                dir('CA1/part3/react-and-spring-data-rest-basic') {
                     echo 'Building with Gradle...'
                     sh 'chmod +x gradlew'
                     sh './gradlew clean assemble'
@@ -46,7 +46,7 @@ ENTRYPOINT ["java", "-jar", "app.jar"]
 
         stage('Test') {
             steps {
-                dir('CA3/react-and-spring-data-rest-basic') {
+                dir('CA1/part3/react-and-spring-data-rest-basic') {
                     echo 'Running tests...'
                     sh './gradlew test'
                     junit '**/build/test-results/test/*.xml'
@@ -56,7 +56,7 @@ ENTRYPOINT ["java", "-jar", "app.jar"]
 
         stage('Javadoc') {
             steps {
-                dir('CA3/react-and-spring-data-rest-basic') {
+                dir('CA1/part3/react-and-spring-data-rest-basic') {
                     echo 'Generating Javadoc...'
                     sh './gradlew javadoc'
                     publishHTML(target: [
@@ -73,7 +73,7 @@ ENTRYPOINT ["java", "-jar", "app.jar"]
 
         stage('Archive') {
             steps {
-                dir('CA3/react-and-spring-data-rest-basic') {
+                dir('CA1/part3/react-and-spring-data-rest-basic') {
                     echo 'Archiving .jar file...'
                     archiveArtifacts artifacts: 'build/libs/*.jar', fingerprint: true
                 }
@@ -82,7 +82,7 @@ ENTRYPOINT ["java", "-jar", "app.jar"]
 
         stage('Build & Push Docker Image') {
             steps {
-                dir('CA3/react-and-spring-data-rest-basic') {
+                dir('CA1/part3/react-and-spring-data-rest-basic') {
                     echo 'Building Docker image...'
                     withCredentials([usernamePassword(credentialsId: env.DOCKER_CREDENTIALS_ID, usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
                         script {
