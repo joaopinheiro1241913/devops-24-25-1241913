@@ -237,7 +237,7 @@ This ID is referenced in the pipeline script to authenticate the Docker push.
 
 ## Part 1: Jenkins Pipeline for Gradle Basic Demo Application
 
-The first stage of the **CA3 assignment** focused on configuring a **Jenkins CI/CD pipeline** for the **Gradle Basic Demo Application**, originally created in **CA1 - Part 3**.
+The first stage of the **CA3 assignment** focused on configuring a **Jenkins CI/CD pipeline** for the **Gradle Basic Demo Application**, originally created in **CA1 - Part 2**.
 
 This pipeline was fully defined using a **Declarative Jenkinsfile**, located at:  
 📁 `CA3/gradle_basic_demo/Jenkinsfile`
